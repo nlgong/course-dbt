@@ -9,22 +9,16 @@ select count(distinct user_id) from dbt_nancy_g.stg_e_commerce__orders
 select count(*) from dbt_nancy_g.stg_e_commerce__users
 
 On average, how many orders do we receive per hour?
-Answer: 0.128 orders/hr
+Answer: 7.52 orders/hr
 
 Query:
-select
-    round(
-        (select count(*) from dbt_nancy_g.stg_e_commerce__orders) / (
-            (
-                date_part('day', t_interval) * 24 + date_part('hour', t_interval)
-            ) * 60 + date_part('minute', t_interval) / 60
-        )::numeric,
-        3
-    ) as avg_orders_per_hr
+select round(avg(counts), 2) as avg_sessions_per_hr
 from
     (
-        select max(order_created_at) - min(order_created_at) t_interval
+        select
+            date_trunc('hour', order_created_at) "hour", count(distinct order_id) counts
         from dbt_nancy_g.stg_e_commerce__orders
+        group by 1
     ) a
 
 On average, how long does an order take from being placed to being delivered?
@@ -65,20 +59,15 @@ from
 
 
 On average, how many unique sessions do we have per hour?
-Answer: 0.169 sessions/hr
+Answer: 16.33 sessions/hr
 
 Query:
-select
-    round(
-        (select count(distinct session_id) from dbt_nancy_g.stg_e_commerce__events) / (
-            (
-                date_part('day', t_interval) * 24 + date_part('hour', t_interval)
-            ) * 60 + date_part('minute', t_interval) / 60
-        )::numeric,
-        3
-    ) as avg_sessions_per_hr
+select round(avg(counts), 2) as avg_sessions_per_hr
 from
     (
-        select max(event_created_at) - min(event_created_at) t_interval
+        select
+            date_trunc('hour', event_created_at) "hour",
+            count(distinct session_id) counts
         from dbt_nancy_g.stg_e_commerce__events
+        group by 1
     ) a
