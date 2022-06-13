@@ -1,0 +1,66 @@
+
+version: 2
+
+models:
+  - name: stg_e_commerce__addresses
+    description: "Users' information on addresses"
+    columns:
+      - name: adress_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_e_commerce__events
+    description: "Event model including "
+    columns:
+      - name: event_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_e_commerce__order_items
+    description: "Order items model"
+    columns:
+      - name: order_item_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_e_commerce__orders
+    description: "Orders model"
+    columns:
+      - name: order_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_e_commerce__products
+    description: "Products model"
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_e_commerce__promos
+    description: "Promos model"
+    columns:
+      - name: promo_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_e_commerce__users
+    description: "Users model"
+    columns:
+      - name: order_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
