@@ -5,7 +5,7 @@ models:
   - name: stg_e_commerce__addresses
     description: "Users' information on addresses"
     columns:
-      - name: adress_id
+      - name: address_id
         description: "The primary key for this table"
         tests:
           - unique
@@ -28,7 +28,11 @@ models:
         tests:
           - unique
           - not_null
-
+      - name: quantity
+        tests:
+          - not_negative_values
+          - not_null
+  
   - name: stg_e_commerce__orders
     description: "Orders model"
     columns:
@@ -37,6 +41,15 @@ models:
         tests:
           - unique
           - not_null
+      - name: order_cost
+        tests:
+          - positive_values
+      - name: shipping_cost
+        tests:
+          - positive_values
+      - name: order_total
+        tests:
+          - positive_values
 
   - name: stg_e_commerce__products
     description: "Products model"
@@ -45,6 +58,14 @@ models:
         description: "The primary key for this table"
         tests:
           - unique
+          - not_null
+      - name: price
+        tests:
+          - positive_values
+          - not_null
+      - name: inventory
+        tests:
+          - not_negative_values
           - not_null
   
   - name: stg_e_commerce__promos
@@ -59,7 +80,7 @@ models:
   - name: stg_e_commerce__users
     description: "Users model"
     columns:
-      - name: order_id
+      - name: user_id
         description: "The primary key for this table"
         tests:
           - unique

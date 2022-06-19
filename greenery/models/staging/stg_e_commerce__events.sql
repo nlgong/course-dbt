@@ -16,9 +16,9 @@ renamed as (
         session_id,
         user_id,
         order_id,
-        product_id
+        product_id,
 
-        -- strings
+        --string
         event_type,
         page_url,
                 
