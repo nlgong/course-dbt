@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_user_order_agg
+    description: aggregated measures of orders at user level
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: fact_user_orders
+    description: All facts about the aggregated order info at user level
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  

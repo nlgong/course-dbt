@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: All information about products
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: dim_users
+    description: All information about users
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: int_orders_agg
+    description: aggregated orders at the granularity with precision to month
+    columns:
+      - name: month_order_created_at
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: fact_orders
+    description: facts about orders at the granularity of month
+    columns:
+      - name: month_order_created_at
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

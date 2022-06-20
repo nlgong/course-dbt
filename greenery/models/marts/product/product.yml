@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_product_page_views_agg
+    description: aggregated page views about each product
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: fact_page_views
+    description: All information about each product and their page views
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  
