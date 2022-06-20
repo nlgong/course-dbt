@@ -3,7 +3,7 @@
 select
     user_id,
     count(order_id) as order_counts,
-    count(case when promo_id is not null then 1 else 0 end) as promo_order_counts,
+    sum(case when promo_id is not null then 1 else 0 end) as promo_order_counts,
     sum(order_cost) as sum_order_cost,
     avg(order_cost) as avg_order_cost,
     sum(shipping_cost) as sum_shipping_cost,

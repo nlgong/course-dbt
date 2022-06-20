@@ -5,7 +5,7 @@ select
     first_name,
     last_name,
     email,
-    phone_number
+    phone_number,
     state,
     country,
     order_counts,
