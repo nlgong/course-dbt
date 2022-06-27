@@ -8,5 +8,5 @@ select
     avg(order_cost) as avg_order_cost,
     sum(shipping_cost) as sum_shipping_cost,
     avg(shipping_cost) as avg_shipping_cost
-from {{ ref('stg_e_commerce__orders') }}
+from {{ ref('stg_e_commerce__orders') }} o
 group by date_trunc('month', order_created_at)

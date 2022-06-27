@@ -40,3 +40,5 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
+on-run-end: "{{ grant_select_on_schema(target.schema, 'reporting') }}"
